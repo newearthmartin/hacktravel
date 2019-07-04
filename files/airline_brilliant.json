@@ -1,0 +1,15 @@
+{
+  "dataFormatVersion": "0.0.0",
+  "updatedAt": "2019-07-04T13:20:06.398Z",
+  "legalEntity": {
+    "name": "Brilliant Airline",
+    "address": {
+      "road": "Brilliant Road",
+      "city": "New York",
+      "countryCode": "US"
+    },
+    "contact": {
+      "email": "brilliantairline@test.com"
+    }
+  }
+}
