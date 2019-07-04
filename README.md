@@ -9,3 +9,5 @@ nvm use 10.16
 npm install
 npm run serve
 ```
+
+Then access the explorer at http://localhost:8080/
