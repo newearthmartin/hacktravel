@@ -13,7 +13,7 @@
       <el-col :span="8">
         <div>
           <p><strong>LIF balance:</strong> {{ lifBalance }}</p>
-          
+          <p><strong>Can we trust this website(using wt-hackathon trust service):</strong> {{ trustWebsite }}</p>
         </div>
       </el-col>
     </el-row>
@@ -40,6 +40,7 @@ export default {
       jsonUrl: null,
       orgJson: null,
       lifBalance: null,
+      trustWebsite: null,
     };
   },
   mounted() {
@@ -59,6 +60,7 @@ export default {
         myThis.jsonUrl = value;
         myThis.loadJsonFromUrl(value);
         myThis.loadLifBalance(myThis.orgId);
+        myThis.getWebsiteTrustClue(myThis.orgId);
       }).catch(err => {
           this.orgJson = err;
       });
@@ -79,6 +81,10 @@ export default {
      let contract = TruffleContract(LifTokenTest);
      contract.setProvider(helper.getProvider());
      return contract.at('0xB6e225194a1C892770c43D4B529841C99b3DA1d7')
+    },
+    async getWebsiteTrustClue(orgId) {
+      var httpResponse = await axios.get('http://caramon.kunveni.net:5010'+ '/clue/dns?organization='+orgId);
+      this.trustWebsite = httpResponse.data.trusted;
     }
   }
 };
