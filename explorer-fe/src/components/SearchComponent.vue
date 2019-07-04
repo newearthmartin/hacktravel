@@ -20,7 +20,7 @@ export default {
   methods: {
     explore() {
       console.log("Searching for org id " + this.orgId);
-      this.$router.push('/explorer/'+ this.orgId);
+      this.$router.push('/explore/'+ this.orgId);
     },
   }
 }

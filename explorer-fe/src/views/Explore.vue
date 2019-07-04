@@ -13,7 +13,7 @@ import axios from 'axios';
 import SearchComponent from '@/components/SearchComponent.vue';
 
 export default {
-  name: 'ExplorerDetails',
+  name: 'Explore',
   components: {
     SearchComponent
   },
