@@ -9,9 +9,9 @@ import router from './router';
 
 Vue.use(ElementUI);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,
   render: function (h) { return h(App) },
-}).$mount('#app')
+}).$mount('#app');
