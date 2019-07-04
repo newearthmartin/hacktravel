@@ -2,8 +2,9 @@
   <div class="test">
     <SearchComponent></SearchComponent>
     <h2 class="orgId">org.id: {{ orgId }}</h2>
+    <h2 class="jsonUrl">json URL: <a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></h2>
     <h2 class="json">json: </h2>
-    <pre class="code">{{ this.currentlySelectedOrg }}</pre>
+    <pre class="code">{{ orgJson }}</pre>
   </div>
 </template>
 
@@ -21,7 +22,8 @@ export default {
     return {
       orgId: null,
       libs: null,
-      currentlySelectedOrg: null,
+      jsonUrl: null,
+      orgJson: null,
     };
   },
   mounted() {
@@ -37,17 +39,17 @@ export default {
       this.loadedOrg.orgJsonUri.then(function (value) {
         console.log("Calling from inside promise");
         console.log(value);
-        myThis.shownOrg = value;
+        myThis.jsonUrl = value;
         myThis.loadJsonFromUrl(value);
       }).catch(err => {
-          this.currentlySelectedOrg = err;
+          this.orgJson = err;
       });
       console.log("Call done");
     },
     async loadJsonFromUrl(url) {
       var httpResponse = await axios.get(url);
       console.log(JSON.stringify(httpResponse));
-      this.currentlySelectedOrg = httpResponse.data;
+      this.orgJson = httpResponse.data;
     }
   }
 };
