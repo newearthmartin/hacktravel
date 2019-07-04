@@ -1,7 +1,8 @@
 <template>
   <div class="test">
     <h2>DEBUG: {{ orgId }}</h2>
-    <h2>ORG: {{ this.currentlySelectedOrg }}</h2>
+    <h2>ORG: </h2>
+    <pre class="code">{{ this.currentlySelectedOrg }}</pre>
   </div>
 </template>
 
