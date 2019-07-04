@@ -5,7 +5,7 @@ export default {
     getLibs() {
        return WtJsLibs.createInstance({
             onChainDataOptions: {
-              provider: 'https://ropsten.infura.io/v3/7714245c4ea74010879bda16618931c9',
+              provider: this.getProvider(),
             },
             offChainDataOptions: {
               adapters: {
@@ -37,5 +37,9 @@ export default {
               }
             },*/
           });
+    },
+
+    getProvider(){
+      return 'https://ropsten.infura.io/v3/7714245c4ea74010879bda16618931c9';
     }
 }
