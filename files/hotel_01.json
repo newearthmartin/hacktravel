@@ -1,0 +1,32 @@
+{
+  "dataFormatVersion": "0.2.3",
+  "updatedAt": "2019-06-03T13:20:06.398Z",
+  "legalEntity": {
+    "name": "Martin's hotel S.A.",
+    "address": {
+      "road": "Av Cabildo",
+      "houseNumber": "1234",
+      "city": "Buenos Aires",
+      "countryCode": "AR"
+    },
+    "contact": {
+      "email": "info@martin.com"
+    }
+  },
+  "hotel": {
+    "location": {
+      "latitude": -34.5683865,
+      "longitude": -58.4507712
+    },
+    "name": "Martin's Hotel",
+    "website": "https://hotel-martin.com",
+    "apis": [
+      {
+        "entrypoint": "https://api.hotel-martin.com",
+        "docs": "https://developers.hotel-martin.com",
+        "format": "ota",
+        "version": "2.0"
+      }
+    ]
+  }
+}
