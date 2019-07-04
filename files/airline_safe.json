@@ -1,0 +1,16 @@
+{
+  "dataFormatVersion": "0.0.0",
+  "updatedAt": "2019-07-04T16:25:06.398Z",
+  "legalEntity": {
+    "name": "Safe Air",
+    "address": {
+      "houseNumber": "123",
+      "road": "Main St.",
+      "city": "Springfield",
+      "countryCode": "US"
+    },
+    "contact": {
+      "email": "breathe@safeair.com"
+    }
+  }
+}
