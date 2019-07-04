@@ -39,6 +39,8 @@ export default {
         console.log(value);
         myThis.shownOrg = value;
         myThis.loadJsonFromUrl(value);
+      }).catch(err => {
+          this.currentlySelectedOrg = err;
       });
       console.log("Call done");
     },
