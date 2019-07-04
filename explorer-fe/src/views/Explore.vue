@@ -56,5 +56,7 @@ export default {
   font-family: 'Lucida Console', Monaco, monospace;
   font-size: smaller;
   text-align: left;
+  padding: 5px;
+  border: 1px solid #c4c7b2;
 }
 </style>
