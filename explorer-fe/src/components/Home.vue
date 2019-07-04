@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
+    <H1>ORG.ID explorer</H1>
     <el-row>
-      <el-col :span="20"><el-input placeholder="OrgIdAddress" v-model="orgidIn"></el-input></el-col>
+      <el-col :span="20"><el-input placeholder="Enter your org id address" v-model="orgidIn"></el-input></el-col>
       <el-col :span="4"><el-button type="primary" plain>Explore</el-button></el-col>
     </el-row>
     <h2>DEBUG: {{ orgidIn }}</h2>
