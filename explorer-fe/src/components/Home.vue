@@ -13,9 +13,6 @@
 import { WtJsLibs } from '@windingtree/wt-js-libs';
 import InMemoryAdapter from '@windingtree/off-chain-adapter-in-memory';
 
-
-
-
 export default {
   name: 'Home',
   data () {
