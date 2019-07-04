@@ -1,9 +1,9 @@
 <template>
   <div class="test">
     <SearchComponent></SearchComponent>
-    <h2 class="orgId">org.id: {{ orgId }}</h2>
-    <h2 class="jsonUrl">json URL: <a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></h2>
-    <h2 class="json">json: </h2>
+    <p class="orgId"><strong>org.id:</strong> {{ orgId }}</p>
+    <p class="jsonUrl"><strong>json URL:</strong> <a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></p>
+    <p class="json"><strong>json:</strong> </p>
     <pre class="code">{{ orgJson }}</pre>
   </div>
 </template>
