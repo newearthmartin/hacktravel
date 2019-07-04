@@ -25,6 +25,8 @@
 import helper from '@/helper.js';
 import axios from 'axios';
 import SearchComponent from '@/components/SearchComponent.vue';
+import LifTokenTest from '@windingtree/lif-token/build/contracts/LifTokenTest.json';
+import TruffleContract from 'truffle-contract';
 
 export default {
   name: 'Explore',
