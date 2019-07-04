@@ -3,7 +3,7 @@
     <H1>ORG.ID explorer</H1>
     <el-row>
       <el-col :span="20"><el-input placeholder="Enter your ORG.ID address" v-model="orgidIn"></el-input></el-col>
-      <el-col :span="4"><el-button type="primary" plain>Explore</el-button></el-col>
+      <el-col :span="4"><el-button v-on:click="getOrgJson()" type="primary" plain>Explore</el-button></el-col>
     </el-row>
     <h2>DEBUG: {{ orgidIn }}</h2>
     <h2>ORG: {{ shownOrg }}</h2>
@@ -13,6 +13,7 @@
 <script>
 import { WtJsLibs } from '@windingtree/wt-js-libs';
 import InMemoryAdapter from '@windingtree/off-chain-adapter-in-memory';
+import axios from 'Axios';
 
 export default {
   name: 'Home',
@@ -21,14 +22,15 @@ export default {
       orgidIn: '',
       libs: 'undefined',
       loadedOrg: {},
-      shownOrg:{}
+      shownOrg:{},
+
     };
   },
 
   mounted() {
     this.libs = WtJsLibs.createInstance({
       onChainDataOptions: {
-        provider: 'http://ropsten.infura.io/v3/7714245c4ea74010879bda16618931c9',
+        provider: 'https://ropsten.infura.io/v3/7714245c4ea74010879bda16618931c9',
       },
       offChainDataOptions: {
         adapters: {
@@ -66,16 +68,20 @@ export default {
     getOrgJson() {
       console.log("Button clicked");
       console.log("Parameter is " + this.orgidIn)
-      console.log(this.libs);
       this.loadedOrg = this.libs.getOrganization(this.orgidIn);
-      this.loadedOrg._orgJsonUri.then(function(value){
+      var myThis= this;
+      this.loadedOrg.orgJsonUri.then(function(value){
         console.log("Calling from inside promise");
-        this.shownOrg = value;
+        console.log(value);
+        myThis.shownOrg =  value;
       });
-      console.log("Call done")
-      console.log(this.loadedOrg);
-      console.log("Done call to directory, returned: "+ JSON.stringify(this.loadedOrg));
-    }
+      
+      console.log("Call done");
+    },
+
+  //  async loadJsonFromUrl(url) {
+  //     await axios.get(url)
+  //   }
   }
 }
 </script>
