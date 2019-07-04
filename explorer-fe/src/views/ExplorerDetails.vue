@@ -7,8 +7,15 @@
 <script>
 export default {
   name: 'ExplorerDetails',
-  data () {},
-  mounted() {}
+  data() {
+    return {
+      url: null
+    };
+  },
+  mounted() {
+    this.url = this.$route.params.orgId;
+    console.log(this.url);
+  }
 };
 </script>
 
