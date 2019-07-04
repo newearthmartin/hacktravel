@@ -4,18 +4,20 @@
      <el-row>
       <el-col :span="16">
         <div>
-          <h2 class="orgId">org.id: {{ orgId }}</h2>
-          <h2 class="jsonUrl">json URL: <a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></h2>
-          <h2 class="json">json: </h2>
-          <pre class="code">{{ orgJson }}</pre></div>
+          <p><strong>org.id:</strong> {{ orgId }}</p>
+          <p><strong>json URL:</strong> &nbsp;<a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></p>
+          <p class="json"><strong>json:</strong> </p>
+          <pre class="code">{{ orgJson }}</pre>
+        </div>
       </el-col>
       <el-col :span="8">
         <div>
-          <h2>LIF BALANCE</h2>
-          <h2>{{ lifBalance }}</h2>
+          <p><strong>LIF balance:</strong> {{ lifBalance }}</p>
+          
         </div>
       </el-col>
     </el-row>
+
   </div>
 </template>
 
