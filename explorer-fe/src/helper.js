@@ -3,9 +3,9 @@ import InMemoryAdapter from '@windingtree/off-chain-adapter-in-memory';
 
 export default {
     getLibs() {
-       return WtJsLibs.createInstance({
+        return WtJsLibs.createInstance({
             onChainDataOptions: {
-              provider: this.getProvider(),
+              provider: 'https://ropsten.infura.io/v3/7714245c4ea74010879bda16618931c9',
             },
             offChainDataOptions: {
               adapters: {
@@ -36,10 +36,7 @@ export default {
                 },
               }
             },*/
-          });
-    },
-
-    getProvider(){
-      return 'https://ropsten.infura.io/v3/7714245c4ea74010879bda16618931c9';
+            }
+        );
     }
 }

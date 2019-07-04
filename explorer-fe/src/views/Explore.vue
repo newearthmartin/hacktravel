@@ -1,23 +1,10 @@
 <template>
   <div class="test">
     <SearchComponent></SearchComponent>
-     <el-row>
-      <el-col :span="16">
-        <div>
-          <p><strong>org.id:</strong> {{ orgId }}</p>
-          <p><strong>json URL:</strong> &nbsp;<a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></p>
-          <p class="json"><strong>json:</strong> </p>
-          <pre class="code">{{ orgJson }}</pre>
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <div>
-          <p><strong>LIF balance:</strong> {{ lifBalance }}</p>
-          
-        </div>
-      </el-col>
-    </el-row>
-
+    <p><strong>org.id:</strong> {{ orgId }}</p>
+    <p><strong>json URL:</strong>&nbsp;<a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></p>
+    <p><strong>json:</strong></p>
+    <pre class="code">{{ orgJson }}</pre>
   </div>
 </template>
 
@@ -25,8 +12,6 @@
 import helper from '@/helper.js';
 import axios from 'axios';
 import SearchComponent from '@/components/SearchComponent.vue';
-import LifTokenTest from '@windingtree/lif-token/build/contracts/LifTokenTest.json';
-import TruffleContract from 'truffle-contract';
 
 export default {
   name: 'Explore',
@@ -39,7 +24,6 @@ export default {
       libs: null,
       jsonUrl: null,
       orgJson: null,
-      lifBalance: null,
     };
   },
   mounted() {
@@ -52,13 +36,11 @@ export default {
       console.log("Parameter is " + this.orgId);
       this.loadedOrg = this.libs.getOrganization(this.orgId);
       var myThis = this;
-      console.log(LifTokenTest);
       this.loadedOrg.orgJsonUri.then(function (value) {
         console.log("Calling from inside promise");
         console.log(value);
         myThis.jsonUrl = value;
         myThis.loadJsonFromUrl(value);
-        myThis.loadLifBalance(myThis.orgId);
       }).catch(err => {
           this.orgJson = err;
       });
@@ -68,17 +50,6 @@ export default {
       var httpResponse = await axios.get(url);
       console.log(JSON.stringify(httpResponse));
       this.orgJson = httpResponse.data;
-    },
-    async loadLifBalance(url) {
-      console.log("loading lif balance: " + JSON.stringify(url));
-      var liftokentest = await this.getLifTokenTestContract();
-      var balance = await liftokentest.balanceOf(url);
-      this.lifBalance = balance.toString();
-    },
-    async getLifTokenTestContract() {
-     let contract = TruffleContract(LifTokenTest);
-     contract.setProvider(helper.getProvider());
-     return contract.at('0xB6e225194a1C892770c43D4B529841C99b3DA1d7')
     }
   }
 };
