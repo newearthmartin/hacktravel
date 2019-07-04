@@ -1,8 +1,8 @@
 <template>
   <div class="test">
     <SearchComponent></SearchComponent>
-    <h2>DEBUG: {{ orgId }}</h2>
-    <h2>ORG: </h2>
+    <h2 class="orgId">org.id: {{ orgId }}</h2>
+    <h2 class="json">json: </h2>
     <pre class="code">{{ this.currentlySelectedOrg }}</pre>
   </div>
 </template>
