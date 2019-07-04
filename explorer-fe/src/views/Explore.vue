@@ -1,8 +1,8 @@
 <template>
   <div class="test">
     <SearchComponent></SearchComponent>
-    <p class="orgId"><strong>org.id:</strong> {{ orgId }}</p>
-    <p class="jsonUrl"><strong>json URL:</strong> <a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></p>
+    <p><strong>org.id:</strong> {{ orgId }}</p>
+    <p><strong>json URL:</strong> &nbsp;<a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></p>
     <p class="json"><strong>json:</strong> </p>
     <pre class="code">{{ orgJson }}</pre>
   </div>
