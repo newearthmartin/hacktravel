@@ -1,5 +1,6 @@
 <template>
   <div class="test">
+    <SearchComponent></SearchComponent>
     <h2>DEBUG: {{ orgId }}</h2>
     <h2>ORG: </h2>
     <pre class="code">{{ this.currentlySelectedOrg }}</pre>
@@ -9,9 +10,13 @@
 <script>
 import helper from '@/helper.js';
 import axios from 'axios';
+import SearchComponent from '@/components/SearchComponent.vue';
 
 export default {
   name: 'ExplorerDetails',
+  components: {
+    SearchComponent
+  },
   data() {
     return {
       orgId: null,
@@ -47,4 +52,9 @@ export default {
 </script>
 
 <style scoped>
+.code {
+  font-family: 'Lucida Console', Monaco, monospace;
+  font-size: smaller;
+  text-align: left;
+}
 </style>
