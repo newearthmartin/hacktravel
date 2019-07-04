@@ -1,12 +1,6 @@
 <template>
   <div class="test">
     <SearchComponent></SearchComponent>
-<<<<<<< HEAD
-    <p><strong>org.id:</strong> {{ orgId }}</p>
-    <p><strong>json URL:</strong>&nbsp;<a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></p>
-    <p><strong>json:</strong></p>
-    <pre class="code">{{ orgJson }}</pre>
-=======
      <el-row>
       <el-col :span="16">
         <div>
@@ -24,7 +18,6 @@
       </el-col>
     </el-row>
 
->>>>>>> new_master
   </div>
 </template>
 
@@ -44,11 +37,8 @@ export default {
       libs: null,
       jsonUrl: null,
       orgJson: null,
-<<<<<<< HEAD
-=======
       lifBalance: null,
       trustWebsite: null,
->>>>>>> new_master
     };
   },
   mounted() {
@@ -66,11 +56,8 @@ export default {
         console.log(value);
         myThis.jsonUrl = value;
         myThis.loadJsonFromUrl(value);
-<<<<<<< HEAD
-=======
         myThis.loadLifBalance(myThis.orgId);
         myThis.getWebsiteTrustClue(myThis.orgId);
->>>>>>> new_master
       }).catch(err => {
           this.orgJson = err;
       });
@@ -80,8 +67,6 @@ export default {
       var httpResponse = await axios.get(url);
       console.log(JSON.stringify(httpResponse));
       this.orgJson = httpResponse.data;
-<<<<<<< HEAD
-=======
     },
     async loadLifBalance(url) {
       console.log("loading lif balance: " + JSON.stringify(url));
@@ -97,7 +82,6 @@ export default {
     async getWebsiteTrustClue(orgId) {
       var httpResponse = await axios.get('http://caramon.kunveni.net:5010'+ '/clue/dns?organization='+orgId);
       this.trustWebsite = httpResponse.data.trusted;
->>>>>>> new_master
     }
   }
 };
