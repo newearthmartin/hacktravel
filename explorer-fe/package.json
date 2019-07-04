@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@windingtree/off-chain-adapter-in-memory": "^5.0.1",
+    "@windingtree/wt-js-libs": "^0.13.2",
     "element-ui": "^2.10.1",
     "vue": "^2.6.10"
   },

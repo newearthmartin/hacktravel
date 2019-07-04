@@ -1,0 +1,89 @@
+<template>
+  <div class="hello">
+    <el-row>
+      <el-col :span="20"><el-input placeholder="OrgIdAddress" v-model="orgidIn"></el-input></el-col>
+      <el-col :span="4"><el-button type="primary" plain>Explore</el-button></el-col>
+    </el-row>
+    <h2>DEBUG: {{ orgidIn }}</h2>
+  </div>
+</template>
+
+<script>
+import { WtJsLibs } from '@windingtree/wt-js-libs';
+import InMemoryAdapter from '@windingtree/off-chain-adapter-in-memory';
+
+
+
+
+export default {
+  name: 'Home',
+  data () {
+    return {
+      orgidIn: '',
+      libs: 'undefined',
+    };
+  },
+
+  mounted() {
+    this.libs = WtJsLibs.createInstance({
+      onChainDataOptions: {
+        provider: 'http://ropsten.infura.io/v3/7714245c4ea74010879bda16618931c9',
+      },
+      offChainDataOptions: {
+        adapters: {
+          // This is how you plug-in any off-chain data adapter you want.
+          'in-memory': {
+            options: {
+              // some: options
+            },
+            create: (options) => {
+              return new InMemoryAdapter(options);
+            },
+          },
+        },
+      },
+      // This is how you configure trust clues
+      /*
+      trustClueOptions: {
+        provider: 'http://ropsten.infura.io/v3/7714245c4ea74010879bda16618931c9', // or infura or any other ETH RPC node
+        clues: {
+          'curated-list': {
+            options: {
+              address: '0x...',
+              provider: 'http://localhost:8545',
+            },
+            create: async (options) => {
+              return new window.TrustClueCuratedList(options);
+            },
+          },
+        }
+      },*/
+    });
+  },
+
+  methods: {
+    getOrgJson(orgIda) {
+      const directory = this.libs.getOrganization(orgIda);
+      console.log("Done call to directory, returned: "+ JSON.stringify(directory));
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
