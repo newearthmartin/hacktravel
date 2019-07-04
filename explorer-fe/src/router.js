@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './components/Home.vue';
-import ExplorerDetails from './components/ExplorerDetails.vue'
+import Home from './views/Home.vue';
+// import ExplorerDetails from './components/ExplorerDetails.vue'
 
 Vue.use(Router);
 
@@ -14,10 +14,10 @@ export default new Router({
       name: 'home',
       component: Home,
     },
-    {
-      path: '/explorer/:orgId',
-      name: 'explorerDetails',
-      component: ExplorerDetails
-    }
+    // {
+    //   path: '/explorer/:orgId',
+    //   name: 'explorerDetails',
+    //   component: ExplorerDetails
+    // }
   ],
 });
