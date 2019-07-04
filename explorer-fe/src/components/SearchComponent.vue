@@ -1,12 +1,11 @@
 <template>
-  <div class="hello">
+  <div class="searchComponent">
     <H1>ORG.ID explorer</H1>
     <el-row>
       <el-col :span="20"><el-input placeholder="Enter your ORG.ID address" v-model="orgidIn"></el-input></el-col>
       <el-col :span="4"><el-button v-on:click="getOrgJson()" type="primary" plain>Explore</el-button></el-col>
     </el-row>
     <h2>DEBUG: {{ orgidIn }}</h2>
-    <h2>ORG: {{ this.currentlySelectedOrg }}</h2>
   </div>
 </template>
 
@@ -17,7 +16,6 @@ import axios from 'axios';
 
 export default {
   name: 'Home',
-  props: [url],
   data () {
     return {
       orgidIn: '',
