@@ -1,6 +1,7 @@
 <template>
   <div class="test">
-      Hola
+    <h2>DEBUG: {{ orgId }}</h2>
+    <h2>ORG: {{ this.currentlySelectedOrg }}</h2>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ export default {
     return {
       orgId: null,
       libs: null,
+      currentlySelectedOrg: null,
     };
   },
   mounted() {
