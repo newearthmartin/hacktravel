@@ -16,4 +16,8 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+.code {
+  font-family: 'Lucida Console', Monaco, monospace;
+  text-align: left;
+}
 </style>

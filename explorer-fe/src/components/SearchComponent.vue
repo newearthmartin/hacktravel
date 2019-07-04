@@ -10,7 +10,6 @@
 </template>
 
 <script>
-// import helper from '../helper'
 export default {
   name: 'search',
   data () {
@@ -21,14 +20,13 @@ export default {
 
   methods: {
     getOrgJson() {
-      console.log("Searching for org id " + this.orgidIn)
+      console.log("Searching for org id " + this.orgidIn);
       this.$router.push('/explorer/'+ this.orgidIn);
     },
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
