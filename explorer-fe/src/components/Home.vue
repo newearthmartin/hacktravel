@@ -13,7 +13,7 @@
 <script>
 import { WtJsLibs } from '@windingtree/wt-js-libs';
 import InMemoryAdapter from '@windingtree/off-chain-adapter-in-memory';
-import axios from 'Axios';
+import axios from 'axios';
 
 export default {
   name: 'Home',
@@ -23,7 +23,7 @@ export default {
       libs: 'undefined',
       loadedOrg: {},
       shownOrg:{},
-
+      currentlySelectedOrg: {},
     };
   },
 
@@ -74,14 +74,15 @@ export default {
         console.log("Calling from inside promise");
         console.log(value);
         myThis.shownOrg =  value;
+        myThis.loadJsonFromUrl(value);
       });
       
       console.log("Call done");
     },
 
-  //  async loadJsonFromUrl(url) {
-  //     await axios.get(url)
-  //   }
+   async loadJsonFromUrl(url) {
+      this.currentlySelectedOrg = await axios.get(url)
+    }
   }
 }
 </script>
