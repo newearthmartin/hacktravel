@@ -2,9 +2,10 @@
   <div class="hello">
     <el-row>
       <el-col :span="20"><el-input placeholder="OrgIdAddress" v-model="orgidIn"></el-input></el-col>
-      <el-col :span="4"><el-button type="primary" plain>Explore</el-button></el-col>
+      <el-col :span="4"><el-button v-on:click="getOrgJson()" type="primary" plain>Explore</el-button></el-col>
     </el-row>
     <h2>DEBUG: {{ orgidIn }}</h2>
+    <h2>ORG: {{ shownOrg }}</h2>
   </div>
 </template>
 
@@ -21,6 +22,8 @@ export default {
     return {
       orgidIn: '',
       libs: 'undefined',
+      loadedOrg: {},
+      shownOrg:{}
     };
   },
 
@@ -62,9 +65,18 @@ export default {
   },
 
   methods: {
-    getOrgJson(orgIda) {
-      const directory = this.libs.getOrganization(orgIda);
-      console.log("Done call to directory, returned: "+ JSON.stringify(directory));
+    getOrgJson() {
+      console.log("Button clicked");
+      console.log("Parameter is " + this.orgidIn)
+      console.log(this.libs);
+      this.loadedOrg = this.libs.getOrganization(this.orgidIn);
+      this.loadedOrg._orgJsonUri.then(function(value){
+        console.log("Calling from inside promise");
+        this.shownOrg = value;
+      });
+      console.log("Call done")
+      console.log(this.loadedOrg);
+      console.log("Done call to directory, returned: "+ JSON.stringify(this.loadedOrg));
     }
   }
 }
