@@ -1,0 +1,32 @@
+{
+  "dataFormatVersion": "0.2.3",
+  "updatedAt": "2019-06-04T14:54:06.398Z",
+  "legalEntity": {
+    "name": "Atlas Hotels AG",
+    "address": {
+      "road": "Test Road",
+      "houseNumber": "1",
+      "city": "Test Town",
+      "countryCode": "US"
+    },
+    "contact": {
+      "email": "info@atlas.com"
+    }
+  },
+  "hotel": {
+    "location": {
+      "latitude": 35.89421911,
+      "longitude": 130.94637467
+    },
+    "name": "Atlas Hotel",
+    "website": "https://atlashotels.com",
+    "apis": [
+      {
+        "entrypoint": "https://api.atlashotels.com",
+        "docs": "https://developers.atlashotels.com",
+        "format": "hotel",
+        "version": "2.0"
+      }
+    ]
+  }
+}
