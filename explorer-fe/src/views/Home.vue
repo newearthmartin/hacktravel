@@ -14,11 +14,6 @@ export default {
   },
   data () {
     return {
-      orgidIn: '',
-      libs: 'undefined',
-      loadedOrg: {},
-      shownOrg:{},
-      currentlySelectedOrg: {},
     };
   },
 
