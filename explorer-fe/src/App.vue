@@ -5,6 +5,7 @@
     background-color="#545c64"
     text-color="#fff">
       <el-menu-item index="1"><el-button @click="$router.push('/')"><router-link to="/">List</router-link></el-button></el-menu-item>
+      <el-menu-item index="2"><el-button @click="$router.push('/createOrgID')"><router-link to="/createOrgID">Create ORG.ID</router-link></el-button></el-menu-item>
     </el-menu>
     <router-view/>
   </div>

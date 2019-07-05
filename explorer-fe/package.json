@@ -14,6 +14,7 @@
     "@windingtree/wt-contracts": "^0.7.0",
     "axios": "^0.19.0",
     "element-ui": "^2.10.1",
+    "ethjs": "^0.4.0",
     "truffle": "^5.0.22",
     "truffle-contract": "^4.0.23",
     "truffle-hdwallet-provider": "^1.0.10",
