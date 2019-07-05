@@ -4,6 +4,8 @@ from .eth import *
 from .models import Org
 import requests
 import threading
+import time
+import traceback
 
 
 logger = logging.getLogger(__name__)
@@ -12,7 +14,12 @@ logger = logging.getLogger(__name__)
 def start_scan_thread():
     logger.info('Starting scan loop!')
     def loop():
-        while True: scan()
+        while True:
+            try:
+                scan()
+            except:
+                traceback.print_exc()
+                time.sleep(60)
     threading.Thread(target=loop).start()
 
 
