@@ -81,6 +81,7 @@ def store_orgs(orgs):
             logger.info('NEW org! %s' % org_id)
             db_org = Org(org_id=org_id)
         db_org.owner =  org['owner']
+        db_org.segment = org['segment']
         db_org.json_url = org['json_url']
         db_org.json_text = org['json_text']
         db_org.lif_balance = org['lif_balance']
