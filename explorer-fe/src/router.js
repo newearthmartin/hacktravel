@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Explore from './views/Explore.vue'
 import CreateOrgID from './views/CreateOrgID.vue'
+import VerifySignature from './views/VerifySignature.vue'
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/createOrgID',
       name: 'createOrgID',
       component: CreateOrgID
+    },
+    {
+      path: '/verify',
+      name: 'verifySignature',
+      component: VerifySignature
     },
   ],
 });
