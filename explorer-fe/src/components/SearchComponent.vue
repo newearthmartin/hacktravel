@@ -16,10 +16,11 @@ export default {
       orgId: null,
     };
   },
-
   methods: {
     explore() {
       console.log("Searching for org id " + this.orgId);
+      this.$router.push('');
+      console.log('pushed to empty')
       this.$router.push('/explore/'+ this.orgId);
     },
   }

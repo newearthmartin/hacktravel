@@ -48,6 +48,12 @@ export default {
     this.orgId = this.$route.params.orgId;
     this.getOrgJson();
   },
+  beforeRouteUpdate(to, from, next) {
+    console.log("Calling beforeRouteUpdate");
+    this.orgId = to.params.orgId;
+    this.getOrgJson();
+    next();
+  },
   methods: {
     getOrgJson() {
       console.log("Parameter is " + this.orgId);

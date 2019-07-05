@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <el-menu
+    mode="horizontal"
+    background-color="#545c64"
+    text-color="#fff">
+      <el-menu-item index="1"><router-link to="/">List</router-link></el-menu-item>
+    </el-menu>
     <router-view/>
   </div>
 </template>
