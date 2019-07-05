@@ -62,9 +62,12 @@ We also are presenting information from the trust service created by another hac
 ## We learned
 
 * To work as an ecosystem, integrating with tools from another hack-team
-* To access the WT contracts blockchain from different languages
-* Working with WT js helpers
+* To access the WT contracts blockchain from different languages, with helpers like wt-js-libs and calling contracts directly with web3
+* Smart contracts, abi, etc
 * Truffle, metamask, etc
+* WT mission: leveling the playfield to let small companies and independent developers (like us!) access the travel industry players
+* Travel industry concepts
+* Trust problems in decentralized ecosystem
 
 ## Extra resources
 
