@@ -12,6 +12,7 @@
     "@windingtree/wt-js-libs": "^0.13.2",
     "axios": "^0.19.0",
     "element-ui": "^2.10.1",
+    "ethjs": "^0.4.0",
     "truffle-contract": "^4.0.23",
     "vue": "^2.6.10",
     "vue-router": "^3.0.7",
