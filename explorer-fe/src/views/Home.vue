@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-
     <SearchComponent></SearchComponent>
     <OrgListComponent></OrgListComponent>
   </div>
