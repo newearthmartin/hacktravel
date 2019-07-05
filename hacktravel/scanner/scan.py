@@ -1,6 +1,22 @@
-from .eth import entrypoint_getSegmentsLength
+import logging
+from .eth import *
+logger = logging.getLogger(__name__)
+
 
 def scan():
-    segments_count = entrypoint_getSegmentsLength()
+    logger.info('Getting segments')
+    segments_count = wt_entrypoint.functions.getSegmentsLength().call()
+
+    segments = []
     for i in range(0, segments_count):
-        print(i)
+        segment_name = wt_entrypoint.functions.getSegmentName(i).call()
+        if not segment_name: continue
+        segment = wt_entrypoint.functions.getSegment(segment_name).call()
+        segments.append((segment_name,segment))
+
+    logger.info('Found %d segments' % len(segments))
+
+    for segment_name, segment_address in segments:
+        logger.info('Segment %s: %s' % (segment_name, segment_address))
+
+
