@@ -4,6 +4,7 @@
      <el-row>
       <el-col :span="16">
         <div>
+          <p><strong>Owner:</strong> {{ owner }}</p>
           <p><strong>org.id:</strong> {{ orgId }}</p>
           <p><strong>json URL:</strong> &nbsp;<a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></p>
           <p class="json"><strong>json:</strong> </p>
@@ -41,6 +42,7 @@ export default {
       orgJson: null,
       lifBalance: null,
       trustWebsite: null,
+      owner: null,
     };
   },
   mounted() {
@@ -48,14 +50,20 @@ export default {
     this.orgId = this.$route.params.orgId;
     this.getOrgJson();
   },
+  beforeRouteUpdate(to, from, next) {
+    console.log("Calling beforeRouteUpdate");
+    this.orgId = to.params.orgId;
+    this.getOrgJson();
+    next();
+  },
   methods: {
-    getOrgJson() {
+    async getOrgJson() {
       console.log("Parameter is " + this.orgId);
       this.loadedOrg = this.libs.getOrganization(this.orgId);
       var myThis = this;
       this.loadedOrg.orgJsonUri.then(function (value) {
         console.log("Calling from inside promise");
-        console.log(value);
+        
         myThis.jsonUrl = value;
         myThis.loadJsonFromUrl(value);
         myThis.loadLifBalance(myThis.orgId);
@@ -63,6 +71,7 @@ export default {
       }).catch(err => {
           this.orgJson = err;
       });
+      this.owner = await this.loadedOrg.owner;
       console.log("Call done");
     },
     async loadJsonFromUrl(url) {

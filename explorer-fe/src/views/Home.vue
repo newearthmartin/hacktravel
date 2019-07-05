@@ -1,16 +1,20 @@
 <template>
   <div class="hello">
+
     <SearchComponent></SearchComponent>
+    <OrgListComponent></OrgListComponent>
   </div>
 </template>
 
 <script>
 import SearchComponent from '@/components/SearchComponent.vue';
+import OrgListComponent from '@/components/OrgListComponent.vue';
 
 export default {
   name: 'Home',
   components: {
-    SearchComponent
+    SearchComponent,
+    OrgListComponent
   },
   data () {
     return {};
