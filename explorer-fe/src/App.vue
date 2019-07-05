@@ -24,4 +24,8 @@
 a {
   color: #42b983;
 }
+body {
+  padding: 0;
+  margin: 0;
+}
 </style>

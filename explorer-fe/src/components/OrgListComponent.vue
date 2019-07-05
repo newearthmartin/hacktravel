@@ -30,6 +30,8 @@
 
 <script>
 import axios from 'axios';
+import helper from '@/helper.js';
+
 export default {
   name: 'orgListComponent',
   data() {
@@ -60,7 +62,7 @@ export default {
       }
       return jsonText.legalEntity.name;
     },
-    goToVerify(orgId){
+    goToVerify(orgId) {
       this.$router.push('/verify?orgId='+orgId);
     }
   }
