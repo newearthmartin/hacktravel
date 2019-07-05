@@ -87,15 +87,18 @@ LOGGING = {
         'simple': {
             'format': '%(name)s %(levelname)s %(message)s',
         },
+        'just_message': {
+            'format': '%(message)s',
+        },
     },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'formatter': 'simple',
+            'formatter': 'just_message',
         },
     },
     'loggers': {
-        'scanner.eth': {
+        'scanner': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': False,
