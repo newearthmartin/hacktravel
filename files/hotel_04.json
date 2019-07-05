@@ -1,0 +1,32 @@
+{
+  "dataFormatVersion": "0.2.3",
+  "updatedAt": "2019-07-05T13:20:06.398Z",
+  "legalEntity": {
+    "name": "Sand & Sea Hotel, LLC",
+    "address": {
+      "road": "Av. Almirante Reis",
+      "houseNumber": "49",
+      "city": "Lisboa",
+      "countryCode": "PT"
+    },
+    "contact": {
+      "email": "stay@sandandsea.com"
+    }
+  },
+  "hotel": {
+    "location": {
+      "latitude": -36.703067,
+      "longitude": -9.178622
+    },
+    "name": "Sand & Sea Hotel",
+    "website": "https://sandandseahotel.com",
+    "apis": [
+      {
+        "entrypoint": "https://api.sandandseahotel.com",
+        "docs": "https://developers.sandandseahotel.com",
+        "format": "hotel",
+        "version": "2.0"
+      }
+    ]
+  }
+}
