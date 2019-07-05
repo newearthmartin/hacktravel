@@ -4,7 +4,7 @@
     mode="horizontal"
     background-color="#545c64"
     text-color="#fff">
-      <el-menu-item index="1"><router-link to="/">List</router-link></el-menu-item>
+      <el-menu-item index="1"><el-button @click="$router.push('/')"><router-link to="/">List</router-link></el-button></el-menu-item>
     </el-menu>
     <router-view/>
   </div>

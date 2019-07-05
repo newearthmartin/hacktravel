@@ -4,8 +4,7 @@
       :data="tableData"
       style="width: 100%">
       <el-table-column
-        label="ORG ID"
-        >
+        label="ORG ID">
         <template slot-scope="scope">
         <router-link :to="{path: '/explore/'+scope.row.org_id}">{{ scope.row.org_id }}</router-link>
       </template>
@@ -20,13 +19,9 @@
         prop="lif_balance"
         label="LIF Balance">
       </el-table-column>
-
-      <el-table-column
-              label="Actions"
-      >
+      <el-table-column label="Actions">
         <template slot-scope="scope">
           <el-button @click="goToVerify(scope.row.org_id)">Verify Signed Msg</el-button>
-          <router-link :to="{path: '/explore/'+scope.row.org_id}">{{ scope.row.org_id }}</router-link>
         </template>
       </el-table-column>
     </el-table>
@@ -59,6 +54,9 @@ export default {
       var jsonText = JSON.parse(jsonString);
       }catch(e){
         return "NOT AVAILABLE";
+      }
+      if(jsonText == null || jsonText.legalEntity == null){
+        return "NOT AVAILABLE"
       }
       return jsonText.legalEntity.name;
     },
