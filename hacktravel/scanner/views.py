@@ -2,6 +2,13 @@ import json
 from django.http import HttpResponse
 from .models import Org
 
+import sys
+import threading
+from .scan import start_scan_thread
+
+if 'runserver' in sys.argv: # HACK!
+    start_scan_thread()
+
 def home(request):
     return HttpResponse('Access list of orgs at /orgs')
 

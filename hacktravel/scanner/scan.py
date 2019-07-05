@@ -1,8 +1,15 @@
 import logging
 from .eth import *
 import requests
+import threading
+
 logger = logging.getLogger(__name__)
 
+def start_scan_thread():
+    logger.info('Starting scan loop!')
+    def loop():
+        while True: scan()
+    threading.Thread(target=loop).start()
 
 def scan():
     logger.info('Getting segments')
@@ -40,4 +47,3 @@ def get_org(org_address):
         'json_text': json_text,
         'owner': owner
     }
-
