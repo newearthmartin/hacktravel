@@ -13,7 +13,7 @@ def scan():
         if not segment_name: continue
         segment = wt_entrypoint.functions.getSegment(segment_name).call()
         segments.append((segment_name,segment))
-    
+
     logger.info('Found %d segments' % len(segments))
 
     for segment_name, segment_address in segments:
@@ -21,8 +21,15 @@ def scan():
 
 def scan_segment(segment_name, segment_address):
     logger.info('Segment %s: %s' % (segment_name, segment_address))
+    orgs = get_segment_orgs(segment_address)
+    logger.info('found %d organizations' % len(orgs))
+
+
+
+def get_segment_orgs(segment_address):
     contract = wt_segment(segment_address)
     organizations = contract.functions.getOrganizations().call()
-    print(organizations)
+    orgs = [org for org in organizations if int(org,0) != 0]
+    return orgs
 
 
