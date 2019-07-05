@@ -4,8 +4,8 @@
      <el-row>
       <el-col :span="16">
         <div>
-          <p><strong>Owner:</strong> {{ owner }}</p>
           <p><strong>org.id:</strong> {{ orgId }}</p>
+          <p><strong>owner:</strong> {{ owner }}</p>
           <p><strong>json URL:</strong> &nbsp;<a :href="jsonUrl" target="_blank">{{jsonUrl}}</a></p>
           <p class="json"><strong>json:</strong> </p>
           <pre class="code">{{ orgJson }}</pre>
