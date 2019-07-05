@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    
     <SearchComponent></SearchComponent>
   </div>
 </template>
