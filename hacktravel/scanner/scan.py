@@ -1,5 +1,6 @@
 import logging
 from .eth import *
+from .models import Org
 import requests
 import threading
 
@@ -24,8 +25,11 @@ def scan():
 
     logger.info('Found %d segments' % len(segments))
 
+    orgs = []
     for segment_name, segment_address in segments:
-        scan_segment(segment_name, segment_address)
+        orgs += scan_segment(segment_name, segment_address)
+    logger.info('Total %d organizations in all segments' % len(orgs))
+    store_orgs(orgs)
 
 def scan_segment(segment_name, segment_address):
     logger.info('Segment %s: %s' % (segment_name, segment_address))
@@ -33,7 +37,10 @@ def scan_segment(segment_name, segment_address):
     orgs = contract.functions.getOrganizations().call()
     orgs = [org for org in orgs if int(org,0) != 0]
     logger.info('found %d organizations in segment %s' % (len(orgs), segment_name))
-    return [get_org(org_address) for org_address in orgs]
+    orgs = [get_org(org_address) for org_address in orgs]
+    for org in orgs:
+        org['segment'] = segment_name
+    return orgs
 
 def get_org(org_address):
     contract = wt_organization(org_address)
@@ -47,3 +54,23 @@ def get_org(org_address):
         'json_text': json_text,
         'owner': owner
     }
+
+def store_orgs(orgs):
+    added_orgs = []
+    for org in orgs:
+        org_id = org['org_id']
+        db_org = Org.objects.filter(org_id=org_id)
+        if db_org.exists():
+            db_org = org.first()
+        else:
+            db_org = Org(org_id=org_id)
+        db_org.owner =  org['owner']
+        db_org.json_url = org['json_url']
+        db_org.json_text = org['json_text']
+        #db_org.lif_balance = org['lif_balance']
+        db_org.trust_clues = org['trust_clues']
+        db_org.save()
+        added_orgs.append(org_id)
+    for db_org in Org.objects.all():
+        if db_org.org_id not in added_orgs:
+            db_org.delete()
