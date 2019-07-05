@@ -22,25 +22,22 @@ def scan():
 
 def scan_segment(segment_name, segment_address):
     logger.info('Segment %s: %s' % (segment_name, segment_address))
-    orgs = get_segment_orgs(segment_address)
-    logger.info('found %d organizations' % len(orgs))
-    for org in orgs:
-        get_org(org)
-
-def get_segment_orgs(segment_address):
     contract = wt_segment(segment_address)
-    organizations = contract.functions.getOrganizations().call()
-    orgs = [org for org in organizations if int(org,0) != 0]
-    return orgs
+    orgs = contract.functions.getOrganizations().call()
+    orgs = [org for org in orgs if int(org,0) != 0]
+    logger.info('found %d organizations in segment %s' % (len(orgs), segment_name))
+    return [get_org(org_address) for org_address in orgs]
 
 def get_org(org_address):
     contract = wt_organization(org_address)
     json_url = contract.functions.getOrgJsonUri().call()
+    owner = contract.functions.owner().call()
     logger.info('organization %s - %s' % (org_address, json_url))
     response = requests.get(json_url)
     json_text = response.text if response.status_code == 200 else None
     return {
         'json_url': json_url,
-        'json_text': json_text
+        'json_text': json_text,
+        'owner': owner
     }
 
