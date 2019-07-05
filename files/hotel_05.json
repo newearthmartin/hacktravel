@@ -1,0 +1,32 @@
+{
+  "dataFormatVersion": "0.2.3",
+  "updatedAt": "2019-06-03T13:20:07.398Z",
+  "legalEntity": {
+    "name": "Hotel Vila Galé Ópera",
+    "address": {
+      "road": "Travessa do Conde da Ponte",
+      "houseNumber": "",
+      "city": "Lisboa",
+      "countryCode": "PT"
+    },
+    "contact": {
+      "email": "book@villagale.com"
+    }
+  },
+  "hotel": {
+    "location": {
+      "latitude": -33.703067,
+      "longitude": -8.178622
+    },
+    "name": "Hotel Vila Galé Ópera",
+    "website": "https://villagale.com.com",
+    "apis": [
+      {
+        "entrypoint": "https://api.villagale.com.com",
+        "docs": "https://developers.villagale.com.com",
+        "format": "hotel",
+        "version": "2.0"
+      }
+    ]
+  }
+}
