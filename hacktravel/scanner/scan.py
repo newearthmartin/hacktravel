@@ -1,3 +1,4 @@
+import json
 import logging
 from .eth import *
 from .models import Org
@@ -48,7 +49,14 @@ def get_org(org_address):
     owner = contract.functions.owner().call()
     logger.debug('organization %s - %s' % (org_address, json_url))
     response = requests.get(json_url)
-    json_text = response.text if response.status_code == 200 else None
+    json_text = None
+
+    if response.status_code == 200:
+        try:
+            json.loads(json_text)
+        except:
+            logger.info('invalid JSON for org %s' % org_address)
+            json_text = None
     return {
         'org_id': org_address,
         'json_url': json_url,
