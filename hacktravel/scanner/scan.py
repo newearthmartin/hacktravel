@@ -62,19 +62,22 @@ def get_org(org_address, segment):
     json_url = contract.functions.getOrgJsonUri().call()
     owner = contract.functions.owner().call()
     logger.debug('organization %s - %s' % (org_address, json_url))
-    response = requests.get(json_url)
     json_text = None
+    try:
+        response = requests.get(json_url)
+        if response.status_code == 200:
+            try:
+                json_text = response.text
+                json.loads(json_text)
+            except ValueError:
+                logger.debug('invalid JSON for org %s - %s' % (org_address, json_url))
+                json_text = None
+    except:
+        traceback.print_exc()
 
     lif_contract = wt_liftokentest('0xB6e225194a1C892770c43D4B529841C99b3DA1d7')
     lif_balance = str(lif_contract.functions.balanceOf(org_address).call())
 
-    if response.status_code == 200:
-        try:
-            json_text = response.text
-            json.loads(json_text)
-        except ValueError:
-            logger.debug('invalid JSON for org %s - %s' % (org_address, json_url))
-            json_text = None
     return {
         'org_id': org_address,
         'json_url': json_url,
