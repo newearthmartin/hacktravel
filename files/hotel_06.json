@@ -1,0 +1,32 @@
+{
+  "dataFormatVersion": "0.2.3",
+  "updatedAt": "2019-06-03T13:20:06.398Z",
+  "legalEntity": {
+    "name": "Ramada Lisboa, S.A.R.L",
+    "address": {
+      "road": "Av. Eng. Arantes e Oliveira",
+      "houseNumber": "9",
+      "city": "Lisboa",
+      "countryCode": "PT"
+    },
+    "contact": {
+      "email": "book@ramadalisboa.com"
+    }
+  },
+  "hotel": {
+    "location": {
+      "latitude": -35.703067,
+      "longitude": -11.178622
+    },
+    "name": "Ramada Lisboa",
+    "website": "https://ramadalisboa.com",
+    "apis": [
+      {
+        "entrypoint": "https://api.ramadalisboa.com",
+        "docs": "https://developers.ramadalisboa.com",
+        "format": "hotel",
+        "version": "2.0"
+      }
+    ]
+  }
+}
