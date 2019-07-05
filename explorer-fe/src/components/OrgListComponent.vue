@@ -19,6 +19,10 @@
         prop="lif_balance"
         label="LIF Balance">
       </el-table-column>
+      <el-table-column
+        prop="segment"
+        label="Segment">
+      </el-table-column>
       <el-table-column label="Actions">
         <template slot-scope="scope">
           <el-button @click="goToVerify(scope.row.org_id)">Verify Signed Msg</el-button>
