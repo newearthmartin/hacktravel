@@ -36,7 +36,7 @@ def scan_segment(segment_name, segment_address):
     contract = wt_segment(segment_address)
     orgs = contract.functions.getOrganizations().call()
     orgs = [org for org in orgs if int(org,0) != 0]
-    logger.info('found %d organizations in segment %s' % (len(orgs), segment_name))
+    logger.info("Found %d organizations in '%s' segment. Retrieving..." % (len(orgs), segment_name))
     orgs = [get_org(org_address) for org_address in orgs]
     for org in orgs:
         org['segment'] = segment_name
@@ -46,31 +46,35 @@ def get_org(org_address):
     contract = wt_organization(org_address)
     json_url = contract.functions.getOrgJsonUri().call()
     owner = contract.functions.owner().call()
-    logger.info('organization %s - %s' % (org_address, json_url))
+    logger.debug('organization %s - %s' % (org_address, json_url))
     response = requests.get(json_url)
     json_text = response.text if response.status_code == 200 else None
     return {
+        'org_id': org_address,
         'json_url': json_url,
         'json_text': json_text,
         'owner': owner
     }
 
 def store_orgs(orgs):
+    logger.info('Storing %d orgs' % len(orgs))
     added_orgs = []
     for org in orgs:
         org_id = org['org_id']
         db_org = Org.objects.filter(org_id=org_id)
         if db_org.exists():
-            db_org = org.first()
+            db_org = org.all()[0]
         else:
+            logger.info('NEW org! %s' % org_id)
             db_org = Org(org_id=org_id)
         db_org.owner =  org['owner']
         db_org.json_url = org['json_url']
         db_org.json_text = org['json_text']
         #db_org.lif_balance = org['lif_balance']
-        db_org.trust_clues = org['trust_clues']
+        #db_org.trust_clues = org['trust_clues']
         db_org.save()
         added_orgs.append(org_id)
     for db_org in Org.objects.all():
         if db_org.org_id not in added_orgs:
+            logger.info('Org %s no longer present, deleting' % db_org.org_id)
             db_org.delete()
