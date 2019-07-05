@@ -4,7 +4,7 @@ Application that allows browsing of organizations registered with winding tree
 ## Team Members
 
 * James XXX, xxx@xxx.com, @kvbik
-* Martin XXX, xxx@xxx.com, @AugustoL
+* Martin Massera, martinmassera@gmail.com, @newearthmartin
 * Jason XXX, xxxx@xxx.com, @github
 * Nathan Hamley, nathan.hamley@peakwork.com
 
@@ -27,7 +27,7 @@ npm run serve
 
 Then access the explorer at http://localhost:8080/
 
-### Backend setup
+### Setting up the scanner
 
 ```
 cd hacktravel
@@ -36,23 +36,35 @@ cd hacktravel
 
 Requires `python3.6` and `virtualenv`
 
-### Running backend
+### Running the scanner
 
 In the same hacktravel folder
 ```
 . run.sh
 ```
-Then access the explorer at http://localhost:8000/
+Then access the scanner API http://localhost:8000/orgs
 
 
-## Problems
-After signing up to the marketplace it can be nice to see who else is part of the network. T
+## Problem
+
+We need UI tools to easily see information about organizations in WT directory. Currently we only have console tools and require a considerable degree of hackerdom.
 
 ## Solution
 
-his ORG ID explorer allows users to look who else is set up with Winding Tree. When looking at the details page, it is possible to view the LIF Balance of an org, as well as whether they have added the public ethereum address to their dns entry (a service provided by another hack-team)
+We created tools related to ORG.ID.The ORG.ID explorer let's you:
+ * see information about an ORG.ID
+ * see how much Lif they have (for trusting purposes)
+ * veriy if a message is effectively signed by an organization
+ * create a new Organization from a JSON URL.
+
+We also are presenting information from the trust service created by another hack-team.
 
 ## We learned
+
+* To work as an ecosystem, integrating with tools from another hack-team
+* To access the WT contracts blockchain from different languages
+* Working with WT js helpers
+* Truffle, metamask, etc
 
 ## Extra resources
 
