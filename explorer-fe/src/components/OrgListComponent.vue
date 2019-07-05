@@ -46,7 +46,11 @@ export default {
     },
     parseName(jsonString){
       console.log("jsonString: " + jsonString);
+      try{
       var jsonText = JSON.parse(jsonString);
+      }catch(e){
+        return "NOT AVAILABLE";
+      }
       return jsonText.legalEntity.name;
     }
   }
