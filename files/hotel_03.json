@@ -1,0 +1,32 @@
+{
+  "dataFormatVersion": "0.2.3",
+  "updatedAt": "2019-06-03T13:20:06.398Z",
+  "legalEntity": {
+    "name": "The Dorm Hostel, S.A",
+    "address": {
+      "road": "R. Rodrigues de Faria",
+      "houseNumber": "103",
+      "city": "Lisboa",
+      "countryCode": "PT"
+    },
+    "contact": {
+      "email": "stay@thedorm.com"
+    }
+  },
+  "hotel": {
+    "location": {
+      "latitude": -38.703067,
+      "longitude": -9.178622
+    },
+    "name": "The Dorm Hostel",
+    "website": "https://thedormhostel.com",
+    "apis": [
+      {
+        "entrypoint": "https://api.thedormhostel.com",
+        "docs": "https://developers.thedormhostel.com",
+        "format": "hotel",
+        "version": "2.0"
+      }
+    ]
+  }
+}
