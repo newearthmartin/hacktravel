@@ -17,6 +17,7 @@ def orgs_view(request):
     orgs = [{
         'org_id': org.org_id,
         'owner': org.owner,
+        'segment': org.segment,
         'json_url': org.json_url,
         'json_text': org.json_text, # maybe too much!
         'lif_balance': org.lif_balance,
