@@ -51,6 +51,9 @@ def get_org(org_address):
     response = requests.get(json_url)
     json_text = None
 
+    lif_contract = wt_liftokentest('0xB6e225194a1C892770c43D4B529841C99b3DA1d7')
+    lif_balance = str(lif_contract.functions.balanceOf(org_address).call())
+
     if response.status_code == 200:
         try:
             json_text = response.text
@@ -62,6 +65,7 @@ def get_org(org_address):
         'org_id': org_address,
         'json_url': json_url,
         'json_text': json_text,
+        'lif_balance': lif_balance,
         'owner': owner
     }
 
@@ -79,7 +83,7 @@ def store_orgs(orgs):
         db_org.owner =  org['owner']
         db_org.json_url = org['json_url']
         db_org.json_text = org['json_text']
-        #db_org.lif_balance = org['lif_balance']
+        db_org.lif_balance = org['lif_balance']
         #db_org.trust_clues = org['trust_clues']
         db_org.save()
         added_orgs.append(org_id)
