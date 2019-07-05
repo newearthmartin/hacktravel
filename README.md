@@ -3,10 +3,10 @@ Application that allows browsing of organizations registered with winding tree
 
 ## Team Members
 
-* James XXX, xxx@xxx.com, @kvbik
+* James Glennon, jamesglennon@gmail.com, @CyberJimbo
 * Martin Massera, martinmassera@gmail.com, @newearthmartin
-* Jason XXX, xxxx@xxx.com, @github
-* Nathan Hamley, nathan.hamley@peakwork.com
+* Jason Moujaes, jmoujaes@gmail.com, @jmoujaes
+* Nathan Hamley, nathan.hamley@peakwork.com @nhamley
 
 ## Repository
 
