@@ -1,5 +1,6 @@
 import logging
 from .eth import *
+import requests
 logger = logging.getLogger(__name__)
 
 
@@ -23,8 +24,8 @@ def scan_segment(segment_name, segment_address):
     logger.info('Segment %s: %s' % (segment_name, segment_address))
     orgs = get_segment_orgs(segment_address)
     logger.info('found %d organizations' % len(orgs))
-
-
+    for org in orgs:
+        get_org(org)
 
 def get_segment_orgs(segment_address):
     contract = wt_segment(segment_address)
@@ -32,4 +33,14 @@ def get_segment_orgs(segment_address):
     orgs = [org for org in organizations if int(org,0) != 0]
     return orgs
 
+def get_org(org_address):
+    contract = wt_organization(org_address)
+    json_url = contract.functions.getOrgJsonUri().call()
+    logger.info('organization %s - %s' % (org_address, json_url))
+    response = requests.get(json_url)
+    json_text = response.text if response.status_code == 200 else None
+    return {
+        'json_url': json_url,
+        'json_text': json_text
+    }
 
