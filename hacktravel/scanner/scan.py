@@ -53,9 +53,10 @@ def get_org(org_address):
 
     if response.status_code == 200:
         try:
+            json_text = response.text
             json.loads(json_text)
-        except:
-            logger.info('invalid JSON for org %s' % org_address)
+        except ValueError:
+            logger.debug('invalid JSON for org %s - %s' % (org_address, json_url))
             json_text = None
     return {
         'org_id': org_address,
@@ -71,7 +72,7 @@ def store_orgs(orgs):
         org_id = org['org_id']
         db_org = Org.objects.filter(org_id=org_id)
         if db_org.exists():
-            db_org = org.all()[0]
+            db_org = db_org.first()
         else:
             logger.info('NEW org! %s' % org_id)
             db_org = Org(org_id=org_id)
