@@ -7,3 +7,4 @@ virtualenv -p python3.6 ht_env
 source ht_env/bin/activate
 pip install -r requirements.txt
 ./manage.py migrate
+./manage.py createcachetable

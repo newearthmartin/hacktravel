@@ -6,6 +6,16 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 
+
+#in minutes
+SCAN_THREAD_SLEEP = 1
+CACHE_TIMEOUT_URLS = 3 * 60
+CACHE_TIMEOUT_SEGMENTS = 24 * 60
+CACHE_TIMEOUT_SEGMENT_ORGS = 1 * 60
+CACHE_TIMEOUT_ORG = 1 * 60
+CACHE_TIMEOUT_LIF_BALANCE = 1 * 60
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -13,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cache_utils',
     'corsheaders',
     'scanner',
 ]
@@ -56,6 +67,13 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'cache_default'
+    },
+}
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -94,11 +112,16 @@ LOGGING = {
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'formatter': 'just_message',
+            'formatter': 'simple',
         },
     },
     'loggers': {
         'scanner': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'cache_utils': {
             'handlers': ['console'],
             'level': 'INFO',
             'propagate': False,
