@@ -13,8 +13,8 @@
       </el-col>
       <el-col :span="8">
         <div>
-          <p><strong>LIF balance:</strong> {{ lifBalance }}</p>
-          <p><strong>Can we trust this website(using wt-hackathon trust service):</strong> {{ trustWebsite }}</p>
+          <p><strong><img class="lif-logo" src="https://lif.windingtree.com/static/img/lif.svg"/> LIF balance:</strong> {{ lifBalance }}</p>
+          <p><strong>DNS verification (using wt-hackathon trust service):</strong> {{ trustWebsite }}</p>
         </div>
       </el-col>
     </el-row>
@@ -105,5 +105,10 @@ export default {
   text-align: left;
   padding: 5px;
   border: 1px solid #c4c7b2;
+}
+
+img.lif-logo {
+  height: 24px;
+  vertical-align: middle;
 }
 </style>
