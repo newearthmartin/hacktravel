@@ -30,7 +30,7 @@ Then access the explorer at http://localhost:8080/
 ### Setting up the scanner
 
 ```
-cd hacktravel
+cd explorer_backend
 . setup.sh
 ```
 
@@ -38,7 +38,7 @@ Requires `python3.6` and `virtualenv`
 
 ### Running the scanner
 
-In the same hacktravel folder
+In the same explorer_backend folder
 ```
 . run.sh
 ```
