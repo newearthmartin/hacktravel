@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     async loadOrgs () {
-      var response = await axios.get('http://localhost:8000/orgs');
+      var response = await axios.get('https://wt-explorer.multilanguage.xyz/backend/orgs'); // use localhost:8000/orgs for development
       console.log("Data: ", JSON.stringify(response.data));
       this.tableData = response.data;
       console.log("After parsing: " + this.tableData);
