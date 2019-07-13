@@ -39,7 +39,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'hacktravel.urls'
+# noinspection PyInterpreter
+ROOT_URLCONF = 'explorer_backend.urls'
 
 TEMPLATES = [
     {
@@ -57,7 +58,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hacktravel.wsgi.application'
+WSGI_APPLICATION = 'explorer_backend.wsgi.application'
 
 
 DATABASES = {
