@@ -1,11 +1,12 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#3ywa6*ai4(&_6w&!+j*g&6%s=1f$9(%vha-es0h1zl!440rg)'
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 
+ADMINS = [('Martin Massera', 'martinmassera@gmail.com')]
 
 #in minutes
 SCAN_THREAD_SLEEP = 5
@@ -106,29 +107,38 @@ LOGGING = {
         'simple': {
             'format': '%(name)s %(levelname)s %(message)s',
         },
+        'simple_time': {
+            'format': '%(asctime)s %(levelname)s %(name)s - %(message)s',
+        },
         'just_message': {
             'format': '%(message)s',
         },
     },
+    'filters': {'require_debug_false': {'()': 'django.utils.log.RequireDebugFalse'}},
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'formatter': 'simple',
+            'formatter': 'simple_time',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
         },
     },
     'loggers': {
         'scanner': {
-            'handlers': ['console'],
+            'handlers': ['console', 'mail_admins'],
             'level': 'INFO',
             'propagate': False,
         },
         'cache_utils': {
-            'handlers': ['console'],
+            'handlers': ['console', 'mail_admins'],
             'level': 'INFO',
             'propagate': False,
         },
         '': {
-            'handlers': ['console'],
+            'handlers': ['console', 'mail_admins'],
             'level': 'INFO',
         },
     },
