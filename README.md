@@ -36,13 +36,21 @@ cd explorer_backend
 
 Requires `python3.6` and `virtualenv`
 
-### Running the scanner
+### Running the scanner (development)
 
 In the same explorer_backend folder
 ```
-. run.sh
+. run_dev.sh
 ```
 Then access the scanner API http://localhost:8000/orgs
+
+
+### Running the scanner in production
+
+For production you need to set up 
+- the django app via wsgi for the webserver.
+- The scanner process in crontab
+
 
 
 ## Problem
