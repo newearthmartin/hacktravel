@@ -19,7 +19,7 @@ https://github.com/newearthmartin/hacktravel
 Requires `node v10.x.x` and `npm 6.4.1`
 
 ```
-cd explorer-fe
+cd explorer_frontend
 nvm use 10.16
 npm install
 npm run serve
