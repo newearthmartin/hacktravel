@@ -51,6 +51,9 @@ For production you need to set up
 - the django app via wsgi for the webserver.
 - The scanner process in crontab
 
+You can set the scan process every 10 minutes in crontab like this:
+
+`*/10 * * * * cd ~/hacktravel/explorer_backend && bash scan.sh`
 
 
 ## Problem
